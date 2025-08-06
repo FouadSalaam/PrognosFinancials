@@ -9,33 +9,72 @@
     <!-- Use Inter font from Google Fonts for a clean look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6; /* Light gray background */
         }
+        /* Custom CSS for a subtle spinning animation */
+        .spinner {
+            animation: spin 1.5s linear infinite;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
     <div class="max-w-2xl w-full bg-white rounded-3xl shadow-2xl p-12 text-center">
-        <!-- A visually appealing icon or SVG -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-indigo-500 mx-auto mb-6" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-        </svg>
-
-        <h1 class="text-4xl sm:text-5xl font-bold text-gray-800 mb-4">
-            Under Construction
+        <!-- Main title for the company - now adjusted for better fit -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-700 mb-6 leading-tight">
+            PrognosFinancials
         </h1>
-        <p class="text-lg text-gray-600 mb-8">
-            Our new financial analysis tool, PrognosFinancials, is currently being built. We'll be live soon with powerful features to help you assess financial health.
+
+        <!-- The "Under Construction" message -->
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
+            Under Construction
+        </h2>
+
+        <!-- A friendly message to the user -->
+        <p class="text-lg text-gray-600 leading-relaxed mb-8">
+            We are diligently working to bring you a sophisticated financial analysis platform.
+            <br>Thank you for your patience as we build something great!
         </p>
 
-        <div class="space-y-4">
-            <p class="text-sm text-gray-500">
-                In the meantime, you can follow our progress or check back here later!
-            </p>
+        <!-- A simple spinner icon to indicate activity -->
+        <div class="flex justify-center">
+            <svg class="spinner h-16 w-16 text-blue-500" viewBox="0 0 50 50">
+                <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4" stroke="currentColor" stroke-linecap="round"></circle>
+                <style>
+                    .path {
+                        stroke-dasharray: 1, 150;
+                        stroke-dashoffset: 0;
+                        animation: dash 1.5s ease-in-out infinite;
+                    }
+                    @keyframes dash {
+                        0% {
+                            stroke-dasharray: 1, 150;
+                            stroke-dashoffset: 0;
+                        }
+                        50% {
+                            stroke-dasharray: 90, 150;
+                            stroke-dashoffset: -35;
+                        }
+                        100% {
+                            stroke-dasharray: 90, 150;
+                            stroke-dashoffset: -124;
+                        }
+                    }
+                </style>
+            </svg>
         </div>
     </div>
 </body>
 </html>
+
