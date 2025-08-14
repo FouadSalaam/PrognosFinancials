@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrognosFinancials - Your Financial Sustainability Partner</title>
+    <!-- Use Tailwind CSS for responsive and modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Use a clean, modern font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        /* Styles for the modal background and content */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: opacity 0.3s ease-in-out;
+            z-index: 50; /* Tailwind z-index for fixed elements */
+        }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.3s ease-in-out;
+            z-index: 51;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        .view {
+            display: none;
+        }
+
+        .view.active {
+            display: block;
+        }
+         /* For Chrome, Safari, Edge, Opera */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /* For Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header & Navigation Bar -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600">PrognosFinancials</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-blue-600 transition-colors duration-300">Home</a>
+                <a href="#features" class="hover:text-blue-600 transition-colors duration-300">Features</a>
+                <a href="#about" class="hover:text-blue-600 transition-colors duration-300">About Us</a>
+                <a href="#contact" class="hover:text-blue-600 transition-colors duration-300">Contact</a>
+            </div>
+            <button id="get-started-nav-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-full shadow-lg transition duration-300 transform hover:scale-105 hidden md:block">
+                Get Started
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-800 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md p-4 space-y-2">
+            <a href="#home" class="block py-2 text-center hover:bg-gray-100 rounded">Home</a>
+            <a href="#features" class="block py-2 text-center hover:bg-gray-100 rounded">Features</a>
+            <a href="#about" class="block py-2 text-center hover:bg-gray-100 rounded">About Us</a>
+            <a href="#contact" class="block py-2 text-center hover:bg-gray-100 rounded">Contact</a>
+            <button id="get-started-mobile-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded-full shadow-lg transition duration-300 transform hover:scale-105 mt-2">
+                Get Started
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-blue-50 py-20 md:py-32 text-center px-6">
+            <div class="container mx-auto">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-blue-800 leading-tight mb-4">Your Partner in Financial Clarity</h1>
+                <p class="text-lg md:text-2xl text-gray-700 max-w-2xl mx-auto mb-8">
+                    We provide powerful financial analysis and insights to help you make informed decisions and secure your company's future.
+                </p>
+                <div class="space-y-4 md:space-y-0 md:space-x-4">
+                    <button id="get-access-hero-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                        Discover your PrognosFinancials Score
+                    </button>
+                    <a href="#features" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-full shadow-md transition duration-300 transform hover:scale-105 inline-block">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Benefits Section -->
+        <section id="features" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">Key Benefits of Our Service</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+                    Our platform helps you simulate and harness financial complexities to achieve long-term financial sustainability.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Benefit 1 -->
+                    <div class="p-6 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <svg class="w-12 h-12 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">In-Depth Analysis</h3>
+                        <p class="text-gray-600">Get a comprehensive overview of your financial health with our detailed reports and metrics.</p>
+                    </div>
+                    <!-- Benefit 2 -->
+                    <div class="p-6 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <svg class="w-12 h-12 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Actionable Insights</h3>
+                        <p class="text-gray-600">Receive clear recommendations and strategies to optimize your financial performance.</p>
+                    </div>
+                    <!-- Benefit 3 -->
+                    <div class="p-6 bg-gray-50 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <svg class="w-12 h-12 text-blue-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-1-3m-3.97-6a3 3 0 11-2.9 2.15M16 17v-1a4 4 0 00-4-4h-2a4 4 0 00-4 4v1m12-2a2 2 0 01-2 2H8a2 2 0 01-2-2"></path></svg>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">User-Friendly Interface</h3>
+                        <p class="text-gray-600">Our intuitive dashboard makes it easy to understand your data, even without a financial background.</p>
+                    </div>
+                    <!-- New marketing statements -->
+                    <div class="col-span-1 md:col-span-3 text-center mt-6">
+                        <p class="text-xl text-gray-700 font-semibold italic mb-4">
+                            "Financial sustainability is far more than a mere wish; it is science, interpreted by sound decisions."
+                        </p>
+                        <p class="text-lg text-gray-600">
+                            Financial statements are historical by nature, meant to be used for sustainability. That is where PrognosFinancials can help you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Methodology Section -->
+        <section id="about" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">About Our Methodology</h2>
+                <div class="max-w-4xl mx-auto prose text-left text-gray-700 space-y-6">
+                    <p>
+                        The PrognosFinancials Score is an advanced financial analysis tool designed to provide a clear, concise, and actionable assessment of a company's financial health and stability. By analyzing key financial metrics, the PrognosFinancials Score helps you quickly understand a company's position and identify potential risks or opportunities.
+                    </p>
+                    <div class="border-t border-gray-200 pt-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Interpreting Your Score</h3>
+                        <div class="space-y-6">
+                            <div class="p-4 bg-green-100 rounded-xl">
+                                <h4 class="text-xl font-semibold text-green-800">1. Green is the Safe Zone</h4>
+                                <p class="text-green-700 mt-2">
+                                    This indicates that the company is in **good financial health** with a low risk of financial distress or bankruptcy. The business is likely to be stable and sustainable.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-yellow-100 rounded-xl">
+                                <h4 class="text-xl font-semibold text-yellow-800">2. Yellow is the Grey Zone</h4>
+                                <p class="text-yellow-700 mt-2">
+                                    This suggests the company's financial health is **ambiguous**. Caution is advised, and further analysis is recommended to determine its true position.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-red-100 rounded-xl">
+                                <h4 class="text-xl font-semibold text-red-800">3. Red is the Distress Zone</h4>
+                                <p class="text-red-700 mt-2">
+                                    This indicates that the company is at a **high risk of financial distress or bankruptcy** within the next two years. Immediate action and a comprehensive review of its financial statements are highly recommended.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center max-w-2xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+                <p class="text-lg text-gray-600 mb-8">
+                    We are here to help. If you have any questions, feedback, or need assistance, please feel free to send us a message.
+                </p>
+                <a href="mailto:support@pronosfinancials.com" class="text-lg font-bold text-blue-600 hover:underline">
+                    support@pronosfinancials.com
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 PronosFinancials. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <!-- The Modal for interactive application views (Pricing, Access, Analysis) -->
+    <div id="app-modal" class="modal-overlay fixed inset-0 flex items-center justify-center opacity-0 pointer-events-none">
+        <div class="modal-content bg-white rounded-3xl shadow-2xl p-8 max-w-4xl w-full mx-4">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <!-- This container will hold the dynamic views -->
+            <div id="modal-views">
+                <!-- Pricing View (updated with the single offer and new button) -->
+                <div id="pricing-view" class="view active">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Flexible Pricing Plans</h2>
+                    <div class="max-w-2xl mx-auto text-center p-8 bg-gray-50 rounded-2xl shadow-lg">
+                        <p class="text-lg text-gray-700 mb-4">To access our services, you'll need a unique access code. As a special introductory offer, you can get started with <span class="font-bold text-blue-600">PrognosFinancials</span> for just <span class="font-bold text-blue-600">$100</span>. This includes one month of access or three uses, whichever comes first.</p>
+                        <p class="text-lg text-gray-700 mb-6">If you're interested, please email us at <a href="#" class="text-blue-600 hover:underline font-semibold" onclick="requestAccess()">GOOGOLerp@gmail.com</a> with the following information:</p>
+                        <ul class="text-left text-gray-700 list-disc list-inside space-y-2 mb-6">
+                            <li><strong>User Name:</strong> [Your Name]</li>
+                            <li><strong>Company Name:</strong> [Your Company's Name]</li>
+                            <li><strong>Message:</strong> I would like to subscribe for one month to PrognosFinancials. Please send me my access code and payment instructions.</li>
+                        </ul>
+                        <p class="text-lg text-gray-700 italic">We will respond promptly with your access code and details on how to complete your payment. We look forward to welcoming you!</p>
+                        <button id="i-have-access-code-btn" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg mt-4 transition duration-300 transform hover:scale-105">
+                            I have an access code
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Access Code View -->
+                <div id="access-code-view" class="view">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Enter your Access Code</h2>
+                    <form id="access-form" class="max-w-sm mx-auto space-y-4">
+                        <input type="text" id="access-code-input" placeholder="Enter your unique access code" class="w-full px-4 py-2 rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                            Grant Access
+                        </button>
+                        <button type="button" onclick="showModalView('pricing-view')" class="w-full text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                            Back to Pricing
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Financial Analysis View (Input Form) -->
+                <div id="financial-analysis-view" class="view">
+                    <div id="main-form-container">
+                        <h2 class="text-2xl font-bold text-center text-blue-700 mb-6">Input Financial Data</h2>
+                        <form id="financial-data-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Analyst and Company Info -->
+                                <div class="col-span-1">
+                                    <label for="analyst-name" class="block text-sm font-medium text-gray-700">Analyst Name</label>
+                                    <input type="text" id="analyst-name" name="analyst-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required autocomplete="off" />
+                                </div>
+                                <div class="col-span-1 md:col-span-2">
+                                    <label for="company-name" class="block text-sm font-medium text-gray-700">Company Name</label>
+                                    <input type="text" id="company-name" name="company-name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required autocomplete="off" />
+                                </div>
+                                <!-- Fiscal Year and Currency on the same line -->
+                                <div class="col-span-1 md:col-span-2 flex items-end gap-6">
+                                    <div class="flex-1">
+                                        <label for="fiscal-year" class="block text-sm font-medium text-gray-700">Fiscal Year</label>
+                                        <input type="number" id="fiscal-year" name="fiscal-year" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    </div>
+                                    <div class="flex-1">
+                                        <label for="currency" class="block text-sm font-medium text-gray-700">Currency</label>
+                                        <input list="currencies" id="currency" name="currency" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" placeholder="e.g., USD" autocomplete="off" />
+                                        <datalist id="currencies">
+                                            <option value="USD"></option>
+                                            <option value="EUR"></option>
+                                            <option value="GBP"></option>
+                                            <option value="JPY"></option>
+                                            <option value="CAD"></option>
+                                            <option value="AUD"></option>
+                                            <option value="CHF"></option>
+                                        </datalist>
+                                    </div>
+                                </div>
+
+                                <!-- Income Statement Items -->
+                                <div class="col-span-1">
+                                    <label for="net-sales-display" class="block text-sm font-medium text-gray-700">Net Sales</label>
+                                    <input type="text" id="net-sales-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="net-sales" name="net-sales" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="gross-profit-display" class="block text-sm font-medium text-gray-700">Gross Profit</label>
+                                    <input type="text" id="gross-profit-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="gross-profit" name="gross-profit" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="ebit-display" class="block text-sm font-medium text-gray-700">Earnings Before Interest and Taxes (EBIT)</label>
+                                    <input type="text" id="ebit-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="ebit" name="ebit" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="interest-expense-display" class="block text-sm font-medium text-gray-700">Interest Expense</label>
+                                    <input type="text" id="interest-expense-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="interest-expense" name="interest-expense" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="net-income-display" class="block text-sm font-medium text-gray-700">Net Income</label>
+                                    <input type="text" id="net-income-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="net-income" name="net-income" />
+                                </div>
+
+                                <!-- Balance Sheet Items -->
+                                <div class="col-span-1">
+                                    <label for="accounts-receivable-display" class="block text-sm font-medium text-gray-700">Accounts Receivable</label>
+                                    <input type="text" id="accounts-receivable-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="accounts-receivable" name="accounts-receivable" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="inventory-display" class="block text-sm font-medium text-gray-700">Inventory</label>
+                                    <input type="text" id="inventory-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="inventory" name="inventory" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="current-assets-display" class="block text-sm font-medium text-gray-700">Current Assets</label>
+                                    <input type="text" id="current-assets-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="current-assets" name="current-assets" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="total-assets-display" class="block text-sm font-medium text-gray-700">Total Assets</label>
+                                    <input type="text" id="total-assets-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="total-assets" name="total-assets" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="retained-earnings-display" class="block text-sm font-medium text-gray-700">Retained Earnings</label>
+                                    <input type="text" id="retained-earnings-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="retained-earnings" name="retained-earnings" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="total-equity-display" class="block text-sm font-medium text-gray-700">Total Equity</label>
+                                    <input type="text" id="total-equity-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="total-equity" name="total-equity" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="accounts-payable-display" class="block text-sm font-medium text-gray-700">Accounts Payable</label>
+                                    <input type="text" id="accounts-payable-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="accounts-payable" name="accounts-payable" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="current-liabilities-display" class="block text-sm font-medium text-gray-700">Current Liabilities</label>
+                                    <input type="text" id="current-liabilities-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="current-liabilities" name="current-liabilities" />
+                                </div>
+                                <div class="col-span-1">
+                                    <label for="total-liabilities-display" class="block text-sm font-medium text-gray-700">Total Liabilities</label>
+                                    <input type="text" id="total-liabilities-display" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 text-right font-mono pr-2" required autocomplete="off" />
+                                    <input type="hidden" id="total-liabilities" name="total-liabilities" />
+                                </div>
+                            </div>
+                        
+                            <div class="flex justify-center mt-6">
+                                <button type="submit" id="main-action-btn" class="px-6 py-2 bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-blue-700 transition duration-300">
+                                    Submit Data
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Results View (this is now the third view) -->
+                <div id="results-view" class="view">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">PrognosFinancials Report</h2>
+                    <div id="report-content" class="max-w-2xl mx-auto space-y-6">
+                        <div class="bg-white p-6 rounded-2xl shadow-md">
+                            <p class="text-center text-gray-500 italic">
+                                The financial data input form has been removed. The report is displayed below.
+                            </p>
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-2xl">
+                            <h3 class="text-xl font-bold text-blue-800 mb-2">Company: <span id="company-name-report" class="font-extrabold">--</span></h3>
+                            <h3 class="text-xl font-bold text-blue-800 mb-2">Analyst: <span id="analyst-name-report" class="font-extrabold">--</span></h3>
+                            <h3 class="text-xl font-bold text-blue-800">Fiscal Year: <span id="fiscal-year-report" class="font-extrabold">--</span></h3>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Financial Health Score: <span id="financial-score" class="font-extrabold text-blue-600">--</span></h3>
+                            <p id="score-interpretation" class="text-gray-700">No data was provided to generate a score.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Key Insights</h3>
+                            <div id="key-insights-content" class="space-y-4">
+                                <!-- Dynamic insights will be injected here -->
+                                <div class="bg-gray-50 p-4 rounded-xl">
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">Vulnerabilities</h4>
+                                    <ul id="vulnerabilities-list" class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>No vulnerabilities found.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-xl">
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">Causal Attributions</h4>
+                                    <ul id="attributions-list" class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>No attributions found.</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-xl">
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-2">Financial Optimizations</h4>
+                                    <ul id="optimizations-list" class="list-disc list-inside text-gray-700 space-y-1">
+                                        <li>No optimizations found.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center space-x-4 pt-8">
+                        <button id="copy-results-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-full shadow-md transition duration-300 transform hover:scale-105">
+                            Copy Results
+                        </button>
+                        <button id="start-new-analysis-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                            Start New Analysis
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Message Box -->
+    <div id="message-box" class="fixed inset-x-0 bottom-4 w-fit mx-auto px-6 py-3 bg-gray-800 text-white text-center rounded-full shadow-lg opacity-0 transition-opacity duration-300 ease-in-out z-50">
+        <span id="message-text"></span>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Global variables
+        const views = {};
+        let activeViewId = null;
+
+        // --- Helper Functions ---
+        function showModal() {
+            const modal = document.getElementById('app-modal');
+            modal.classList.add('active');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100', 'pointer-events-auto');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('app-modal');
+            modal.classList.remove('active', 'opacity-100', 'pointer-events-auto');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            // Reset to the initial view when closing
+            showModalView('pricing-view');
+        }
+
+        function showModalView(viewId) {
+            if (activeViewId) {
+                views[activeViewId].classList.remove('active');
+            }
+            const newView = views[viewId];
+            if (newView) {
+                newView.classList.add('active');
+                activeViewId = viewId;
+            }
+        }
+
+        function showMessage(text) {
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
+            messageText.textContent = text;
+            messageBox.classList.remove('opacity-0');
+            messageBox.classList.add('opacity-100');
+            setTimeout(() => {
+                messageBox.classList.remove('opacity-100');
+                messageBox.classList.add('opacity-0');
+            }, 3000);
+        }
+
+        function requestAccess() {
+            // This function would typically send a request to a backend service.
+            // For this demonstration, we'll just show a message.
+            showMessage("Access request sent to GOOGOLerp@gmail.com!");
+        }
+
+        // The validation function is simplified to always return true,
+        // since we are not using a backend to validate the code.
+        function validateAccessCode(code) {
+            // This now accepts any code, simulating a successful backend check.
+            return true;
+        }
+
+        function copyResults() {
+            const reportContent = document.getElementById('report-content').innerText;
+            // Use Clipboard API
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(reportContent).then(() => {
+                    showMessage('Report copied to clipboard!');
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
+                    showMessage('Failed to copy report.');
+                });
+            } else {
+                // Fallback for older browsers
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = reportContent;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                try {
+                    document.execCommand('copy');
+                    showMessage('Report copied to clipboard!');
+                } catch (err) {
+                    console.error('Fallback: Could not copy text: ', err);
+                    showMessage('Failed to copy report.');
+                }
+                document.body.removeChild(tempTextArea);
+            }
+        }
+        
+        function initializeApp() {
+            // Cache all views
+            views['pricing-view'] = document.getElementById('pricing-view');
+            views['access-code-view'] = document.getElementById('access-code-view');
+            views['financial-analysis-view'] = document.getElementById('financial-analysis-view'); // New view
+            views['results-view'] = document.getElementById('results-view');
+            
+            // Initial view
+            showModalView('pricing-view');
+
+            // Set up event listeners
+            document.getElementById('get-started-nav-btn').addEventListener('click', showModal);
+            document.getElementById('get-started-mobile-btn').addEventListener('click', showModal);
+            document.getElementById('get-access-hero-btn').addEventListener('click', showModal);
+            
+            document.getElementById('i-have-access-code-btn').addEventListener('click', () => showModalView('access-code-view'));
+            
+            document.getElementById('access-form').addEventListener('submit', (event) => {
+                event.preventDefault();
+                const code = document.getElementById('access-code-input').value.trim();
+                if (validateAccessCode(code)) {
+                    showMessage("Access Granted!");
+                    // Switch to the new financial analysis view after a delay
+                    setTimeout(() => showModalView('financial-analysis-view'), 1000);
+                } else {
+                    showMessage("Access Denied. Invalid code.");
+                }
+            });
+
+            // The form logic from Input Financial Data.html is integrated here
+            const financialForm = document.getElementById('financial-data-form');
+            const mainActionBtn = document.getElementById('main-action-btn');
+            const allInputs = document.querySelectorAll('#financial-data-form input:not([type="hidden"])');
+            const displayInputs = document.querySelectorAll('input[type="text"][id$="-display"]');
+
+            // Function to format the number with commas and two decimals
+            const formatNumber = (value) => {
+                const numericValue = value.replace(/[^0-9.]/g, '');
+                if (!isNaN(parseFloat(numericValue)) && isFinite(numericValue)) {
+                    const parts = numericValue.split('.');
+                    const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    if (parts.length > 1) {
+                        return `${integerPart}.${parts[1].slice(0, 2)}`;
+                    }
+                    return integerPart;
+                }
+                return value;
+            };
+
+            // Event listeners for formatting
+            displayInputs.forEach(input => {
+                input.addEventListener('input', (event) => {
+                    const cursorPosition = event.target.selectionStart;
+                    const originalLength = event.target.value.length;
+                    const cleanedValue = event.target.value.replace(/,/g, '');
+                    
+                    event.target.value = formatNumber(cleanedValue);
+                    
+                    const newLength = event.target.value.length;
+                    const newCursorPosition = cursorPosition + (newLength - originalLength);
+                    event.target.setSelectionRange(newCursorPosition, newCursorPosition);
+                });
+                
+                // Add .00 on blur if no decimals exist
+                input.addEventListener('blur', (event) => {
+                    if (event.target.value && !event.target.value.includes('.')) {
+                        event.target.value = `${event.target.value}.00`;
+                    }
+                });
+            });
+
+            // Event listener for consistent 'Enter' key navigation
+            allInputs.forEach((input, index) => {
+                input.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter') {
+                        event.preventDefault();
+                        let nextInput = allInputs[index + 1];
+                        if (nextInput) {
+                            nextInput.focus();
+                        }
+                    }
+                });
+            });
+
+            // Form submission logic
+            financialForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                if (mainActionBtn.textContent === 'Submit Data') {
+                    // Before submission, copy the unformatted values to hidden inputs
+                    displayInputs.forEach(displayInput => {
+                        const hiddenInputId = displayInput.id.replace('-display', '');
+                        const hiddenInput = document.getElementById(hiddenInputId);
+                        hiddenInput.value = displayInput.value.replace(/,/g, '');
+                    });
+
+                    // Disable all form fields
+                    allInputs.forEach(input => {
+                        input.disabled = true;
+                    });
+
+                    // Change button to "Edit Data"
+                    mainActionBtn.textContent = 'Edit Data';
+                    mainActionBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+                    mainActionBtn.classList.add('bg-gray-500', 'hover:bg-gray-600');
+
+                    showMessage('Financial data has been submitted and is ready for editing.');
+
+                } else if (mainActionBtn.textContent === 'Edit Data') {
+                    // Enable all form fields for editing
+                    allInputs.forEach(input => {
+                        input.disabled = false;
+                    });
+                    
+                    // Change button back to "Submit Data"
+                    mainActionBtn.textContent = 'Submit Data';
+                    mainActionBtn.classList.remove('bg-gray-500', 'hover:bg-gray-600');
+                    mainActionBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                }
+            });
+
+
+            document.getElementById('copy-results-btn').addEventListener('click', copyResults);
+            document.getElementById('start-new-analysis-btn').addEventListener('click', () => {
+                showModalView('financial-analysis-view'); // Changed to go back to the form
+            });
+        }
+
+        // Initialize the app when the DOM is ready
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+</body>
+</html>
